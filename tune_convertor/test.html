@@ -1,0 +1,45 @@
+<html>
+	<meta charset="utf-8" />
+
+</html>
+
+<script language="javascript">
+
+
+</script>
+
+<script language="javascript">
+	Convertor = {};
+	var dist_table = new Array(0,1,1,0.5,1,1,1);
+	var dist_from_do = function(note){
+		var bias = 0;
+		if(note[0]==='#'){
+				bias = 0.5;
+				note = note[1];
+		}
+		var num = parseInt(note);
+		alert(num);
+		for(var i=0;i<num;i++){
+			bias += dist_table[i];
+		}
+		return bias;
+	};
+	Convertor.DistFromDO = dist_from_do;
+
+	var tmp = "";
+	tmp += Convertor.DistFromDo("1").toString()+"\n";
+	tmp += Convertor.DistFromDo("#1")+"\n";
+	tmp += Convertor.DistFromDo("2")+"\n";
+	tmp += Convertor.DistFromDo("#2")+"\n";
+	tmp += Convertor.DistFromDo("3")+"\n";
+	tmp += Convertor.DistFromDo("#3")+"\n";
+	tmp += Convertor.DistFromDo("4")+"\n";
+	tmp += Convertor.DistFromDo("#4")+"\n";
+	tmp += Convertor.DistFromDo("5")+"\n";
+	tmp += Convertor.DistFromDo("#5")+"\n";
+	tmp += Convertor.DistFromDo("6")+"\n";
+	tmp += Convertor.DistFromDo("#6")+"\n";
+	tmp += Convertor.DistFromDo("7")+"\n";
+	tmp += Convertor.DistFromDo("#7")+"\n";
+	alert(tmp);
+</script>
