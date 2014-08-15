@@ -1,7 +1,3 @@
-<html>
-<meta charset="utf-8" />
-
-<script region="Convertor.js" type="text/javascript">
 var Convertor = {
 	GetNote:0
 };
@@ -30,23 +26,3 @@ function(){
 	};
 	Convertor.GetNote = get_note;
 }();
-
-
-</script>
-<body>
-	<p id="test_result"></p>
-</body>
-
-<script language="javascript">
-	alert(Convertor.toString());
-	var res = "";
-	for(var i=1;i<=36;i++){
-		res += Convertor.GetNote(i)+"&nbsp";
-		if(i!==0&&(i%12)==0){
-			res += "<br>"
-		}
-	}
-	document.getElementById("test_result").innerHTML = res;
-</script>
-
-</html>
