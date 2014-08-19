@@ -1,0 +1,120 @@
+<html>
+<meta charset="utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet"></link>
+<body class="container">
+	<div class="row" style="text-align:center;margin-bottom:30px;margin-top:20px">
+		<h1>36音阶首调转换器</h1>
+	</div>
+	<div class="row" style="text-align:center">
+		<div class="alert alert-warning">
+			注意：只支持低、中、高三个八度内的全音、半音简谱转换；谱子中无法识别的符号将被保留在原位置。
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-area col-sm-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<strong>
+						输入简谱
+					</strong>
+				</div>
+				<div class="panel-body" style="padding:0px 0px 0px 0px;">
+					<textarea id="raw_music" type=text style="height:400px;margin-bottom:20px"></textarea>
+					<input class="btn-lg btn-info" id="convert_button" type="button" value="转谱"></input>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-1">
+			<div class="panel panel-info">
+				<div class="panel-heading" style="padding-left:0px;padding-right:0px">
+					<strong>当前首调</strong>
+				</div>
+				<div id="src_mark" class="list-group">
+					<a class="list-group-item">Gb</a>
+					<a class="list-group-item">G</a>
+					<a class="list-group-item">Ab</a>
+					<a class="list-group-item">A</a>
+					<a class="list-group-item">Bb</a>
+					<a class="list-group-item">B</a>
+					<a class="list-group-item active">C</a>
+					<a class="list-group-item">Db</a>
+					<a class="list-group-item">D</a>
+					<a class="list-group-item">Eb</a>
+					<a class="list-group-item">E</a>
+					<a class="list-group-item">F</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-1">
+			<div class="panel panel-info">
+				<div class="panel-heading" style="padding-left:0px;padding-right:0px">
+					<strong>目标首调</strong>
+				</div>
+				<div id="dest_mark" class="list-group">
+					<a class="list-group-item">Gb</a>
+					<a class="list-group-item">G</a>
+					<a class="list-group-item">Ab</a>
+					<a class="list-group-item">A</a>
+					<a class="list-group-item">Bb</a>
+					<a class="list-group-item">B</a>
+					<a class="list-group-item active">C</a>
+					<a class="list-group-item">Db</a>
+					<a class="list-group-item">D</a>
+					<a class="list-group-item">Eb</a>
+					<a class="list-group-item">E</a>
+					<a class="list-group-item">F</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="output-area panel panel-info">
+				<div class="panel-heading">
+					<strong>
+						转换结果
+					</strong>
+				</div>
+				<textarea id="convert_result" type=text style="height:480px;"></textarea>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		
+	</div>
+</body>
+
+<script src="js/bootstrap.js" type="text/javascript"></script>
+<script src="js/Convertor.js" type="text/javascript"></script>
+<script src="js/jquery.js"></script>
+
+<script type="text/javascript">
+(function(){
+	var raw_music_width = $(".input-area").find(".panel-heading").css("width");
+	$("#raw_music").css("width",raw_music_width);
+	var dest_music_width = $(".output-area").find(".panel-heading").css("width");
+	$("#convert_result").css("width",dest_music_width);
+})();
+
+(function(){
+	var group_click = function(){
+		$(this).parent().find(".active").removeClass("active");
+		$(this).addClass("active");
+	};
+	$("#src_mark").find(".list-group-item").bind("click",group_click);
+	$("#dest_mark").find(".list-group-item").bind("click",group_click);
+})();
+
+(function(){
+	$("#convert_button").bind("click",function(){
+		var text = $("#raw_music").val();
+		var src_mark = $("#src_mark").find(".active").text();
+		var dest_mark = $("#dest_mark").find(".active").text();
+		text = Convertor.ConvertTone(text,src_mark,dest_mark);
+		$("#convert_result").val(text);
+	});
+
+})();	
+</script>
+
+</html>
+
