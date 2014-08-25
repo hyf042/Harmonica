@@ -5,7 +5,7 @@
 * @brief	Convertor tool for tone convertion
 */
 
-//only can be used when the script is from "[1]" to "(7)"
+//only can be used when the script is from "(1)" to "[7]"
 var Convertor = {
 	/** 
 	*	function ReadNoteText(raw_note_text_str)
@@ -42,8 +42,8 @@ var Convertor = {
 	* OUTPUT:
 	* 	the converted music script,as a string:
 	*		{
-	*				"67~|(1)7(1)|(3)7","D","C" 		=> "56~|#66#6|(2)6"
-	*				"###67~|(1)7(1)|(3)7","D","C" => "#56~|#66#6|(2)6"
+	*				"67~|[1]7[1]|[3]7","D","C" 		=> "56~|#66#6|[2]6"
+	*				"###67~|[1]7[1|3]7","D","C" 		=> "#56~|#66#6|[2]6"
 	*		}
 	*/
 	ConvertTone: 0
@@ -66,13 +66,13 @@ var Convertor = {
 
 		for(var i=0;i<raw_text.length;i++){
 			var in_char = raw_text[i];
-			if (in_char==="["){
+			if (in_char==="("){
 				step = 0;
-			} else if(in_char==="]"){
-				step = 1;
-			} else if(in_char==="("){
-				step = 2;
 			} else if(in_char===")"){
+				step = 1;
+			} else if(in_char==="["){
+				step = 2;
+			} else if(in_char==="]"){
 				step = 1;
 			} else if(in_char==="#"){
 				chromate = 1;
@@ -125,7 +125,7 @@ var Convertor = {
 * Convertor.CalcNoteText
 */
 (function(){
-	//gamut starts from "[1]"=>1 and thus "1"=>13
+	//gamut starts from "(1)"=>1 and thus "1"=>13
 	var basic_notes = 
 		["0","1","#1","2","#2","3","4","#4","5","#5","6","#6","7"];
 		//0	,	1,	 2,	 3,   4,  5,  6,   7,  8,   9,  10, 11,  12
@@ -146,10 +146,10 @@ var Convertor = {
 			gamut = 12;
 		var note = basic_notes[gamut];
 		if(step === 0){
-			note = "["+note+"]";
+			note = "("+note+")";
 		}
 		else if(step ===2){
-			note = "("+note+")";
+			note = "["+note+"]";
 		}
 		return note;
 	};
