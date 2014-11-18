@@ -5,3 +5,7 @@
 
 ####tools  
 * Some useful auxiliary materials for harmonica practice
+
+####ATTENTION  
+* A link from justice_enternal about their scripts is: http://pan.baidu.com/s/1mgvCcnI
+
