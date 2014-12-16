@@ -5,3 +5,6 @@
 
 ####tools  
 * Some useful auxiliary materials for harmonica practice
+
+####Yuge Course
+http://www.tudou.com/plcover/SE1glZBVwAg/
