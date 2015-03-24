@@ -8,3 +8,7 @@
 
 ####Yuge Course
 http://www.tudou.com/plcover/SE1glZBVwAg/
+
+####ATTENTION  
+* A link from justice_enternal about their scripts is: http://pan.baidu.com/s/1mgvCcnI
+
